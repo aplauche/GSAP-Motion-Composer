@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GMC Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+  <main class="site-main">
+    <section class="center intro-section">
+      <h1>GSAP Motion Composer</h1>
+      <h3>Build common ScrollTrigger and GSAP patterns faster.</h3>
+    </section>
+
+    <!-- basic enter -->
+    <section class="icon-row center">
+      <div class="row">
+        <div class="icon-row__item item">fade up</div>
+        <div class="icon-row__item item">fade up</div>
+        <div class="icon-row__item item">fade up</div>
+        <div class="icon-row__item item">fade up</div>
+      </div>
+      <pre>
+        gmc.each('.icon-row', (block) => {
+          const items = block.querySelectorAll('.item') // Items are scoped to instance
+          gmc.onScroll.enter(block)
+            .from(items, {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
+        })
+      </pre>
+    </section>
+
+    <!-- enter and reset -->
+    <section class="icon-row-with-reset center bg-white">
+      <div class="row">
+        <div class="icon-row__item item">fade up</div>
+        <div class="icon-row__item item">fade up</div>
+        <div class="icon-row__item item">fade up</div>
+        <div class="icon-row__item item">fade up</div>
+      </div>
+      <pre>
+        gmc.each('.icon-row-with-reset', (block) => {
+          const items = block.querySelectorAll('.item') // Items are scoped to instance
+          gmc.onScroll.enterAndReset(block)
+            .from(items, {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
+        })
+      </pre>
+    </section>
+
+    <!-- Counter -->
+    <section class="counter-row center ">
+      <div class="counter-item item">00</div>
+      <h2>Count up</h2>
+      <pre>
+        gmc.each('.counter-row', (block) => {
+          const counter = block.querySelector('.counter-item')
+          gmc.onScroll.enter(block).gmc_count(counter, 10, 200, 2)
+        })
+      </pre>
+    </section>
+
+    <!-- Parallax Scrub -->
+    <section class="parallax-row center row bg-white">
+      <div class="item">item</div>
+      <div class="item">item</div>
+      <div class="item">item</div>
+      <pre>
+        gmc.each('.parallax-row', (block) => {
+          const items = block.querySelectorAll('.item')
+          gmc.onScroll.scrub(block)
+            .from(items[0], {y: -300}, "0")
+            .from(items[1], {y: 200}, "0")
+            .from(items[2], {y: 400}, "0")
+        })
+      </pre>
+    </section>
+
+    <!-- Parallax Scrub and Pin -->
+    <section class="parallax-pinned-row center row">
+      <div class="item">item</div>
+      <div class="item">item</div>
+      <div class="item">item</div>
+      <pre>
+        gmc.each('.parallax-pinned-row', (block) => {
+          const items = block.querySelectorAll('.item')
+          gmc.onScroll.scrubAndPin(block)
+            .from(items[0], {y: -300}, "0")
+            .from(items[1], {y: 200}, "0")
+            .from(items[2], {y: 400}, "0")
+        })
+      </pre>
+    </section>
+    <section class="bg-white">
+
+    </section>
+  </main>
+  <script type="module" src="./index.js"></script>
+</body>
+</html>
