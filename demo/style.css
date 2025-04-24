@@ -16,6 +16,10 @@ body {
   color: white;
 }
 
+.intro-section pre {
+  background: #2a2a2a;
+}
+
 h1 {
   font-weight: 700;
   font-size: 3rem;
@@ -24,6 +28,13 @@ h1 {
 
 section {
   height: 100vh;
+}
+
+.section--center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .bg-white {

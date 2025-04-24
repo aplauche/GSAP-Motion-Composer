@@ -2,36 +2,24 @@ import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { pinnedImageSequence } from './recipes/pinned-image-sequence';
 import { scrollingBodyClasses } from './recipes/scrolling-body-classes';
+import registerCountUpEffect from './recipes/count-up';
+import registerTitleSlideUpEffect from './recipes/title-slide-up'
+
+
 
 const GSAPMotionComposer = () => {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  registerCountUpEffect()
+  registerTitleSlideUpEffect()
+
+
+
   const scrollDefaults = {
     start: "50% bottom",
     scrub: false,
     pin: false
-  }
-
-  gsap.core.Timeline.prototype.gmc_count = function (
-    el, 
-    start, 
-    end, 
-    decimals, 
-    options = {}, 
-    position = undefined
-  ){
-    let counter = {value: start}
-    this.to(counter, {
-        value: end,
-        duration: 2,
-        ease: "none",
-        onUpdate: () => {
-          el.innerText = counter.value.toFixed(decimals); 
-        },
-        ...options
-      }, position)
-    return this
   }
 
   /**

@@ -1,6 +1,8 @@
 import gsap from "gsap";
 import { gmc } from "../src/gsap-motion-composer.js";
 
+gsap.timeline().titleSlideUp('.title')
+
 gmc.each('.icon-row', (block) => {
   const items = block.querySelectorAll('.item') // Items are scoped to instance
   gmc.onScroll.enter(block)
@@ -15,7 +17,7 @@ gmc.each('.icon-row-with-reset', (block) => {
 
 gmc.each('.counter-row', (block) => {
   const counter = block.querySelector('.counter-item')
-  gmc.onScroll.enter(block).gmc_count(counter, 10, 200, 2)
+  gmc.onScroll.enter(block).countUp(counter)
 })
 
 gmc.each('.parallax-row', (block) => {
