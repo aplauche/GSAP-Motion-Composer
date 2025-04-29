@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 
-export default function registerTitleSlideUpEffect(){
+export default function registerWordSlideUpEffect(){
 
   function splitTitleWords(el) {
     if (!el) return;
@@ -25,7 +25,7 @@ export default function registerTitleSlideUpEffect(){
   }
 
   gsap.registerEffect({
-    name: "titleSlideUp",
+    name: "wordSlideUp",
     effect: (targets, config) => {
       const master = gsap.timeline();
 

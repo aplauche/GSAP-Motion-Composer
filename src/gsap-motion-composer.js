@@ -2,8 +2,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { pinnedImageSequence } from './recipes/pinned-image-sequence';
 import { scrollingBodyClasses } from './recipes/scrolling-body-classes';
-import registerCountUpEffect from './recipes/count-up';
-import registerTitleSlideUpEffect from './recipes/title-slide-up'
+import registerCountUpEffect from './effects/count-up';
+import registerWordSlideUpEffect from './effects/word-slide-up'
 
 
 
@@ -12,7 +12,7 @@ const GSAPMotionComposer = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   registerCountUpEffect()
-  registerTitleSlideUpEffect()
+  registerWordSlideUpEffect()
 
 
 

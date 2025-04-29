@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { gmc } from "../src/gsap-motion-composer.js";
 
-gsap.timeline().titleSlideUp('.title')
+gsap.timeline().wordSlideUp('.title')
 
 gmc.each('.icon-row', (block) => {
   const items = block.querySelectorAll('.item') // Items are scoped to instance
@@ -35,24 +35,3 @@ gmc.each('.parallax-pinned-row', (block) => {
     .from(items[1], {y: 200}, "0")
     .from(items[2], {y: 400}, "0")
 })
-
-// gmc.each('.icon-row', (block) => {
-//   const items = block.querySelectorAll('.icon-row__item')
-//   const tl = gmc.scroll.enter(block).from(items, {autoAlpha: 0, y:32, stagger: 1, duration: 3})
-// })
-
-
-// gmc.each('.icon-row', (block) => {
-//   const items = block.querySelectorAll('.icon-row__item')
-//   const tl = gmc.scroll.enter(block).from(items, {autoAlpha: 0, y:32, stagger: 1, duration: 3})
-// })
-
-// gmc.each('.counter-row', (block) => {
-//   gmc.scroll.enter(block).from(block, {
-//     onUpdate: (this) => {
-//       gmc.onUpdate.count(this, '.count', 8, 80, 2)
-//     }
-//   })
-// })
-
-// gmc.recipes.pinnedImageSequence()
