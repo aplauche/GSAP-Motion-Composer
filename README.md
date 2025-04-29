@@ -65,6 +65,19 @@ gmc.each('.example', (block) => {
 
 Additional scroll methods are planned to streamline "sticky" functionality as well as overlapping sections, and horizontal scroll with pinning.
 
+### Effects
+
+These effects get registered with GSAP allowing direct calling on timelines. 
+
+ - countUp: count up value animation
+ - wordSlideUp: staggered word slide up animation
+
+#### Usage Examples:
+
+`gsap.timeline().countUp('.counter', {endValue: 500, decimals: 0})`
+
+`gsap.timeline().wordSlideUp('.animated-title')`
+
 ### Recipes 
 
 Recipes are stand-alone functions that can be called to accomplish specific effects or functionality.
