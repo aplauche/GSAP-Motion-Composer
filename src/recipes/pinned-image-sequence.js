@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 /**
  * Create an "airpods" style canvas image sequence animation that is pinned and tied to scroll
  * 
@@ -56,9 +58,9 @@ export const pinnedImageSequence = (
       snap: "frame",
       ease: "none",
       scrollTrigger: {
-        trigger: `+=${scrollLength}`,
+        trigger: trigger,
         start: "top top",
-        end: duration,
+        end: `+=${scrollLength}`,
         pin: true,
         scrub: 0.5
       },

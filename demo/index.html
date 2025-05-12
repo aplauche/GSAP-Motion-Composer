@@ -13,12 +13,14 @@
 <body>
   <main class="site-main">
     <section class="center intro-section">
-      <h1 class="title">GSAP Motion Composer 🚀</h1>
-      <h3>Build common ScrollTrigger and GSAP patterns faster.</h3>
+      <h1 class="title">GSAP Motion Composer</h1>
+      <h3>Common ScrollTrigger and GSAP patterns</h3>
       <pre>
 gsap.timeline().wordSlideUp('.title')
       </pre>
     </section>
+
+
 
     <!-- basic enter -->
     <section class="icon-row center">
@@ -29,11 +31,8 @@ gsap.timeline().wordSlideUp('.title')
         <div class="icon-row__item item">fade up</div>
       </div>
       <pre>
-        gmc.each('.icon-row', (block) => {
-          const items = block.querySelectorAll('.item') // Items are scoped to instance
-          gmc.onScroll.enter(block)
-            .from(items, {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
-        })
+          gmc.onScroll.enter('.section')
+            .from('.item', {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
       </pre>
     </section>
 
@@ -46,11 +45,8 @@ gsap.timeline().wordSlideUp('.title')
         <div class="icon-row__item item">fade up</div>
       </div>
       <pre>
-        gmc.each('.icon-row-with-reset', (block) => {
-          const items = block.querySelectorAll('.item') // Items are scoped to instance
-          gmc.onScroll.enterAndReset(block)
-            .from(items, {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
-        })
+          gmc.onScroll.enterAndReset('.section')
+            .from('.item', {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
       </pre>
     </section>
 
@@ -82,6 +78,10 @@ gsap.timeline().wordSlideUp('.title')
       </pre>
     </section>
 
+    <section class="airpod-row">
+      <canvas></canvas>
+    </section>
+
     <!-- Parallax Scrub and Pin -->
     <section class="parallax-pinned-row center row">
       <div class="item">item</div>
@@ -97,8 +97,20 @@ gsap.timeline().wordSlideUp('.title')
         })
       </pre>
     </section>
+
+    <section class="line-fade-row center bg-white">
+      <div style="max-width: 760px;">
+        <h3 class="lines">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate rem quidem aliquid, velit alias! Minima vitae optio animi ipsa, dolore adipisci voluptatem pariatur praesentium perferendis quod eius labore nemo soluta eaque eos consequuntur est accusantium aliquam! A sint laborum expedita voluptatum adipisci repellat dicta ut repellendus eius fugit repudiandae deleniti magni, dolorem, praesentium, obcaecati asperiores enim! Ratione aperiam nam maiores provident officiis sint saepe cum, necessitatibus fuga, cupiditate tenetur quas omnis magni nobis, a adipisci? Sequi beatae.</h3>
+      </div>
+      <pre>
+        gmc.each('.line-fade-row', (block) => {
+          const items = block.querySelectorAll('.lines') // Items are scoped to instance
+          gmc.onScroll.enter(block).lineFadeIn(items)
+        })
+      </pre>
+    </section>
     <section class="center intro-section">
-      <h2>Build with GSAP Faster 🚀</h2>
+      <h2>GSAP Motion Composer</h2>
       <!-- <h3>Build common ScrollTrigger and GSAP patterns faster.</h3> -->
     </section>
   </main>

@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 
-export default function registerCountUpEffect(){
+export default function countUp(){
 
   // gsap.registerEffect({
   //   name: "fadeIn",

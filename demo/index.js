@@ -3,10 +3,16 @@ import { gmc } from "../src/gsap-motion-composer.js";
 
 gsap.timeline().wordSlideUp('.title')
 
+gmc.recipes.pinnedImageSequence('.airpod-row')
+
 gmc.each('.icon-row', (block) => {
   const items = block.querySelectorAll('.item') // Items are scoped to instance
   gmc.onScroll.enter(block)
     .from(items, {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
+})
+gmc.each('.line-fade-row', (block) => {
+  const items = block.querySelectorAll('.lines') // Items are scoped to instance
+  gmc.onScroll.enter(block).lineFadeIn(items)
 })
 
 gmc.each('.icon-row-with-reset', (block) => {

@@ -1,21 +1,26 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import { pinnedImageSequence } from './recipes/pinned-image-sequence';
 import { scrollingBodyClasses } from './recipes/scrolling-body-classes';
-import registerCountUpEffect from './effects/count-up';
-import registerWordSlideUpEffect from './effects/word-slide-up'
+import countUp from './effects/countUp';
+import wordSlideUp from './effects/wordSlideUp'
+import lineFadeIn from './effects/lineFadeIn'
 
 
 
 const GSAPMotionComposer = () => {
 
+  // Register Plugins
   gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(SplitText)
 
-  registerCountUpEffect()
-  registerWordSlideUpEffect()
+  // Register Effects
+  countUp()
+  wordSlideUp()
+  lineFadeIn()
 
-
-
+  // Defaults
   const scrollDefaults = {
     start: "50% bottom",
     scrub: false,

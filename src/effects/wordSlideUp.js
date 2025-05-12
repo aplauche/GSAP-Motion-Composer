@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 
-export default function registerWordSlideUpEffect(){
+export default function wordSlideUp(){
 
   function splitTitleWords(el) {
     if (!el) return;
