@@ -1,9 +1,9 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { gmc } from "../dist/gsap-motion-composer.esm.min.js";
+import { GSAPMotionComposer } from "../dist/gsap-motion-composer.min.js";
 
-
+const gmc = GSAPMotionComposer({triggerStart: "top top"})
 
 gsap.timeline().wordSlideUp('.title')
 

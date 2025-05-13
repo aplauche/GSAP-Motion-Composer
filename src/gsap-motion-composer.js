@@ -8,21 +8,39 @@ import wordSlideUp from './effects/wordSlideUp'
 import lineFadeIn from './effects/lineFadeIn'
 
 
+/**
+ * Initializer for the GSAP Motion Composer Library
+ * 
+ * @param {Object} options object with configuration options for scroll trigger settings
+ */
+export const GSAPMotionComposer = (options) => {
 
-const GSAPMotionComposer = () => {
+  // Config
+  config = {
+    triggerStart: "50% bottom",
+    includeEffects: true,
+    ...options
+  }
 
   // Register Plugins
   gsap.registerPlugin(ScrollTrigger);
-  gsap.registerPlugin(SplitText)
 
   // Register Effects
-  countUp()
-  wordSlideUp()
-  lineFadeIn()
+  if(config.includeEffects){
+
+      gsap.registerPlugin(SplitText)
+
+      countUp()
+      wordSlideUp()
+      lineFadeIn()
+  }
+
+
+
 
   // Defaults
   const scrollDefaults = {
-    start: "50% bottom",
+    start: config.triggerStart,
     scrub: false,
     pin: false
   }
@@ -170,6 +188,4 @@ const GSAPMotionComposer = () => {
     recipes
   }
 }
-
-export const gmc = GSAPMotionComposer();
 
