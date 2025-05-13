@@ -1,0 +1,41 @@
+name: Build & Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-release:
+    name: Build and Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build library
+        run: npm run dist
+
+      - name: Get current date as version tag
+        id: version
+        run: echo "TAG=v$(date +'%Y.%m.%d-%H%M%S')" >> $GITHUB_ENV
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.TAG }}
+          name: Release ${{ env.TAG }}
+          files: |
+            dist/gsap-motion-composer.js
+            dist/gsap-motion-composer.min.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

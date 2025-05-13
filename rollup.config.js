@@ -5,11 +5,11 @@ export default {
   input: 'src/gsap-motion-composer.js',
   output: [
     {
-      file: 'dist/gsap-motion-composer.esm.js',
+      file: 'dist/gsap-motion-composer.js',
       format: 'esm', // <- for import/export
     },
     {
-      file: 'dist/gsap-motion-composer.esm.min.js',
+      file: 'dist/gsap-motion-composer.min.js',
       format: 'esm', // <- for import/export
       plugins: [terser()],
     }
