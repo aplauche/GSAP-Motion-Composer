@@ -1,5 +1,9 @@
 import gsap from "gsap";
-import { gmc } from "../src/gsap-motion-composer.js";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+import { gmc } from "../dist/gsap-motion-composer.esm.min.js";
+
+
 
 gsap.timeline().wordSlideUp('.title')
 

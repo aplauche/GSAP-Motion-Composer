@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "This library serves as a wrapper for GSAP and ScrollTrigger to make some of the most common setups faster and easier to execute.",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "rollup -c && vite",
+    "build": "rollup -c && vite build",
+    "preview": "vite preview",
+    "dist": "rollup -c"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.40.2",
     "vite": "^6.0.3"
   },
   "dependencies": {
