@@ -29,8 +29,14 @@ jobs:
 
       - name: Extract version from package.json
         id: pkg
-        run: echo "TAG=v$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "TAG=v$VERSION" >> $GITHUB_ENV
 
+      - name: Debug tag
+        run: echo "Releasing tag $TAG"
+        env:
+          TAG: ${{ env.TAG }}
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
