@@ -1,6 +1,6 @@
 {
   "name": "gsap-motion-composer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This library serves as a wrapper for GSAP and ScrollTrigger to make some of the most common setups faster and easier to execute.",
   "scripts": {
     "dev": "rollup -c && vite",
