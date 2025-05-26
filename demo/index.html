@@ -18,15 +18,32 @@
     <section class="center intro-section">
       <div class="container two-up">
         <div>
+          <div class="pill">GSAP Motion Composer</div>
           <h1 class="title">Common animation patterns in half the code.</h1>
-          <p class="mb-section">
+          <p class="subhead mb-section">
             I got tired of writing the same GSAP boilerplate and patterns in every web project, so I built this tool to speed things up. It wraps some of my most commonly used animation setups into clean, reusable helpers that can trigger smooth, scroll-based, and interactive animations with minimal code.
           </p>
           <a href="https://github.com/aplauche/GSAP-Motion-Composer" target="_blank" class="button">View on Github</a>
         </div>
-        <div>
+        <div class="compare">
+          <p>Before:</p>
+          <pre>
+gsap.from(items, {
+  scrollTrigger: {
+    trigger: block,
+    start: "top 50%",
+    end: "+=500",
+    scrub: 0.5,
+  },
+  autoAlpha: 0, 
+  y: 32, 
+  duration: 1
+})
+          </pre>
+          <p>After:</p>
           <pre class="mb-section">
-gsap.timeline().wordSlideUp('.title')
+gmc.onScroll.scrub(block)
+  .from(items, {autoAlpha: 0, y: 32, duration: 1})
           </pre>
         </div>
       </div>

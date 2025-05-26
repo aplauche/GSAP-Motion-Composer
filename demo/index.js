@@ -8,18 +8,15 @@ const tl = gsap.timeline()
 
 tl
   .wordSlideUp('.title')
-  .from('p', {autoAlpha: 0}, ">-=0.5")
-  .fromTo('.button', {autoAlpha: 0}, {autoAlpha: 1}, ">-=0.5")
+  .from('subhead', {autoAlpha: 0}, ">-=0.5")
+  .fromTo('.button, .pill', {autoAlpha: 0}, {autoAlpha: 1}, ">-=0.5")
+  .fromTo('.compare', {autoAlpha: 0}, {autoAlpha: 1}, ">-=0.5")
 
 
 gmc.each('.icon-row', (block) => {
   const items = block.querySelectorAll('.item') // Items are scoped to instance
   gmc.onScroll.enter(block)
     .from(items, {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
-})
-gmc.each('.line-fade-row', (block) => {
-  const items = block.querySelectorAll('.lines') // Items are scoped to instance
-  gmc.onScroll.enter(block).lineFadeIn(items)
 })
 
 gmc.each('.icon-row-with-reset', (block) => {
