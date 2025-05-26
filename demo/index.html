@@ -7,98 +7,95 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
   <main class="site-main">
     <section class="center intro-section">
-      <h1 class="title">GSAP Motion Composer</h1>
-      <h3>Common ScrollTrigger and GSAP patterns</h3>
-      <pre>
+      <div class="container two-up">
+        <div>
+          <h1 class="title">Common animation patterns in half the code.</h1>
+          <p class="mb-section">
+            I got tired of writing the same GSAP boilerplate and patterns in every web project, so I built this tool to speed things up. It wraps some of my most commonly used animation setups into clean, reusable helpers that can trigger smooth, scroll-based, and interactive animations with minimal code.
+          </p>
+          <a href="https://github.com/aplauche/GSAP-Motion-Composer" target="_blank" class="button">View on Github</a>
+        </div>
+        <div>
+          <pre class="mb-section">
 gsap.timeline().wordSlideUp('.title')
-      </pre>
+          </pre>
+        </div>
+      </div>
+      <!-- <h1 >GSAP Motion Composer</h1> -->
+
     </section>
 
 
 
     <!-- basic enter -->
-    <section class="icon-row center">
-      <div class="row">
-        <div class="icon-row__item item">fade up</div>
-        <div class="icon-row__item item">fade up</div>
-        <div class="icon-row__item item">fade up</div>
-        <div class="icon-row__item item">fade up</div>
+    <section class="icon-row section--center">
+      <div class="container">
+        <div class="mb-5">
+          <h2>No fuss scroll animations</h2>
+          <p>Skip the scrolltrigger with sensible defaults</p>
+        </div>
+        <div class="row">
+          <div class="icon-row__item item">fade up</div>
+          <div class="icon-row__item item">fade up</div>
+          <div class="icon-row__item item">fade up</div>
+          <div class="icon-row__item item">fade up</div>
+        </div>
+        <pre>
+gmc.onScroll.enter('.section')
+  .from('.item', {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
+        </pre>
       </div>
-      <pre>
-          gmc.onScroll.enter('.section')
-            .from('.item', {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
-      </pre>
     </section>
 
     <!-- enter and reset -->
-    <section class="icon-row-with-reset center bg-white">
-      <div class="row">
-        <div class="icon-row__item item">fade up</div>
-        <div class="icon-row__item item">fade up</div>
-        <div class="icon-row__item item">fade up</div>
-        <div class="icon-row__item item">fade up</div>
+    <section class="icon-row-with-reset section--center bg-white">
+      <div class="container">
+        <div class="mb-5">
+          <h2>Easy offscreen resets</h2>
+          <p>Go ahead, scroll up and try it again.</p>
+        </div>
+
+        <div class="row">
+          <div class="icon-row__item item">fade up</div>
+          <div class="icon-row__item item">fade up</div>
+          <div class="icon-row__item item">fade up</div>
+          <div class="icon-row__item item">fade up</div>
+        </div>
+        <pre>
+gmc.onScroll.enterAndReset('.section')
+  .from('.item', {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
+        </pre>
       </div>
-      <pre>
-          gmc.onScroll.enterAndReset('.section')
-            .from('.item', {autoAlpha: 0, y: 32, stagger: 0.4, duration: 1})
-      </pre>
     </section>
 
     <!-- Counter -->
-    <section class="counter-row center ">
-      <div class="counter-item item">00</div>
-      <h2>Count up</h2>
-      <pre>
-        gmc.each('.counter-row', (block) => {
-          const counter = block.querySelector('.counter-item')
-          gmc.onScroll.enter(block).countUp(counter)
-        })
-      </pre>
+    <section class="counter-row section--center ">
+      <div class="container">
+        <div class="mb-section">
+          <h2>Animated counters as easy as 1, 2, 3.</h2>
+        </div>
+        
+        <div class="counter-item item">00</div>
+
+        <pre>
+gmc.each('.counter-row', (block) => {
+  const counter = block.querySelector('.counter-item')
+  gmc.onScroll.enter(block).countUp(counter)
+})
+        </pre>
+      </div>
     </section>
 
-    <!-- Parallax Scrub -->
-    <section class="parallax-row center row bg-white">
-      <div class="item">item</div>
-      <div class="item">item</div>
-      <div class="item">item</div>
-      <pre>
-        gmc.each('.parallax-row', (block) => {
-          const items = block.querySelectorAll('.item')
-          gmc.onScroll.scrub(block)
-            .from(items[0], {y: -300}, "0")
-            .from(items[1], {y: 200}, "0")
-            .from(items[2], {y: 400}, "0")
-        })
-      </pre>
-    </section>
-
-    <section class="airpod-row">
-      <canvas></canvas>
-    </section>
-
-    <!-- Parallax Scrub and Pin -->
-    <section class="parallax-pinned-row center row">
-      <div class="item">item</div>
-      <div class="item">item</div>
-      <div class="item">item</div>
-      <pre>
-        gmc.each('.parallax-pinned-row', (block) => {
-          const items = block.querySelectorAll('.item')
-          gmc.onScroll.scrubAndPin(block)
-            .from(items[0], {y: -300}, "0")
-            .from(items[1], {y: 200}, "0")
-            .from(items[2], {y: 400}, "0")
-        })
-      </pre>
-    </section>
-
-    <section class="line-fade-row center bg-white">
+    <!-- <section class="line-fade-row center bg-white">
       <div style="max-width: 760px;">
         <h3 class="lines">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate rem quidem aliquid, velit alias! Minima vitae optio animi ipsa, dolore adipisci voluptatem pariatur praesentium perferendis quod eius labore nemo soluta eaque eos consequuntur est accusantium aliquam! A sint laborum expedita voluptatum adipisci repellat dicta ut repellendus eius fugit repudiandae deleniti magni, dolorem, praesentium, obcaecati asperiores enim! Ratione aperiam nam maiores provident officiis sint saepe cum, necessitatibus fuga, cupiditate tenetur quas omnis magni nobis, a adipisci? Sequi beatae.</h3>
       </div>
@@ -108,10 +105,76 @@ gsap.timeline().wordSlideUp('.title')
           gmc.onScroll.enter(block).lineFadeIn(items)
         })
       </pre>
+    </section> -->
+
+    <!-- Parallax Scrub -->
+    <section class="parallax-row center row bg-white">
+      <div class="container">
+        <div class="two-up">
+
+          <div>
+            <h2>Dead simple scrubbing</h2>
+            <p>For easy parallax effects and more</p>
+            <pre class="d-desktop">
+gmc.each('.parallax-row', (block) => {
+  const items = block.querySelectorAll('.item')
+  gmc.onScroll.scrub(block)
+    .from(items[0], {y: -300}, "0")
+    .from(items[1], {y: 200}, "0")
+    .from(items[2], {y: 400}, "0")
+})
+            </pre>
+          </div>
+          <div class="row plax-row">
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+          </div>
+        </div>
+      </div>
     </section>
-    <section class="center intro-section">
-      <h2>GSAP Motion Composer</h2>
-      <!-- <h3>Build common ScrollTrigger and GSAP patterns faster.</h3> -->
+
+    <!-- Parallax Scrub and Pin -->
+    <section class="parallax-pinned-row center row">
+      <div class="container">
+        <div class="two-up">
+
+          <div>
+            <h2>Scrubs with pinning is just as easy</h2>
+            <p>Quickly toggle pinning on/off as needed</p>
+            <pre class="d-desktop">
+gmc.each('.parallax-pinned-row', (block) => {
+  const items = block.querySelectorAll('.item')
+  gmc.onScroll.scrubAndPin(block)
+    .from(items[0], {y: -300}, "0")
+    .from(items[1], {y: 200}, "0")
+    .from(items[2], {y: 400}, "0")
+})
+            </pre>
+          </div>
+          <div class="row plax-row">
+            <div class="item">item</div>
+            <div class="item">item</div>
+            <div class="item">item</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="airpod-row">
+      <h2 style="text-align: center;">And yeah, of course it makes<br>this stuff easy too.</h2>
+      <canvas></canvas>
+    </section>
+
+
+
+    <section class="center">
+      <div class="container center">
+        <h2 class="h1 mb-5">GSAP Motion Composer</h2>
+        <h3 class="mb-5">Speed up your GSAP workflow with powerful shorthand helpers.</h3>
+        <a href="https://github.com/aplauche/GSAP-Motion-Composer" target="_blank" class="button">View on Github</a>
+      </div>
     </section>
   </main>
   <script type="module" src="./index.js"></script>

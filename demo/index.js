@@ -1,13 +1,16 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { gmc } from "../dist/gsap-motion-composer.esm.min.js";
+import { gmc } from "../dist/gsap-motion-composer.min.js";
+import './style.scss'
 
+const tl = gsap.timeline()
 
+tl
+  .wordSlideUp('.title')
+  .from('p', {autoAlpha: 0}, ">-=0.5")
+  .fromTo('.button', {autoAlpha: 0}, {autoAlpha: 1}, ">-=0.5")
 
-gsap.timeline().wordSlideUp('.title')
-
-gmc.recipes.pinnedImageSequence('.airpod-row')
 
 gmc.each('.icon-row', (block) => {
   const items = block.querySelectorAll('.item') // Items are scoped to instance
@@ -30,18 +33,45 @@ gmc.each('.counter-row', (block) => {
   gmc.onScroll.enter(block).countUp(counter)
 })
 
-gmc.each('.parallax-row', (block) => {
-  const items = block.querySelectorAll('.item')
-  gmc.onScroll.scrub(block)
-    .from(items[0], {y: -300}, "0")
-    .from(items[1], {y: 200}, "0")
-    .from(items[2], {y: 400}, "0")
+let mm = gsap.matchMedia();
+
+mm.add("(max-width: 960px)", () => {
+  console.log("test")
+  gmc.each('.parallax-row', (block) => {
+    const items = block.querySelectorAll('.item')
+    gmc.onScroll.scrub(block)
+    .from(items[0], {x: -150}, "0")
+    .from(items[1], {x: 120}, "0")
+    .from(items[2], {x: 90}, "0")
+  })
+  
+  gmc.each('.parallax-pinned-row', (block) => {
+    const items = block.querySelectorAll('.item')
+    gmc.onScroll.scrubAndPin(block)
+      .from(items[0], {x: -50}, "0")
+      .from(items[1], {x: 90}, "0")
+      .from(items[2], {x: 30}, "0")
+  })
 })
 
-gmc.each('.parallax-pinned-row', (block) => {
-  const items = block.querySelectorAll('.item')
-  gmc.onScroll.scrubAndPin(block)
-    .from(items[0], {y: -300}, "0")
-    .from(items[1], {y: 200}, "0")
-    .from(items[2], {y: 400}, "0")
+mm.add("(min-width: 961px)", () => {
+  gmc.each('.parallax-row', (block) => {
+    const items = block.querySelectorAll('.item')
+    gmc.onScroll.scrub(block)
+      .from(items[0], {y: -300}, "0")
+      .from(items[1], {y: 200}, "0")
+      .from(items[2], {y: 400}, "0")
+  })
+  
+  gmc.each('.parallax-pinned-row', (block) => {
+    const items = block.querySelectorAll('.item')
+    gmc.onScroll.scrubAndPin(block)
+      .from(items[0], {y: -300}, "0")
+      .from(items[1], {y: 200}, "0")
+      .from(items[2], {y: 400}, "0")
+  })
 })
+
+
+
+gmc.recipes.pinnedImageSequence('.airpod-row')
