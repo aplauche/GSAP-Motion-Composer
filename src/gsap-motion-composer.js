@@ -16,17 +16,37 @@ const GSAPMotionComposer = (start = "top bottom-=150px") => {
   }
 
   /**
+   * Utility for selecting an element
+   * 
+   * @param {String} selector selector for querySelectorAll() to find and execute for each loop on
+   * @param {HTMLElement} block scope on which to search
+   */
+    const el = (selector, block = document) => {
+      return block.querySelector(selector)
+    }
+
+  /**
+   * Utility for selecting multiple elements
+   * 
+   * @param {String} selector selector for querySelectorAll() to find and execute for each loop on
+   * @param {HTMLElement} block scope on which to search
+   */
+    const all = (selector, block = document) => {
+      return block.querySelectorAll(selector)
+    }
+
+  /**
    * Utility for doing a querySelectorAll and forEach loop and then running functionality
    * 
    * @param {String} selector selector for querySelectorAll() to find and execute for each loop on
    * @param {Function} cb Function to execute scoped to each section
    */
-  const each = (selector, cb) => {
-    const items = document.querySelectorAll(selector)
-    items.forEach(item => {
-      cb(item)
-    })
-  }
+    const each = (selector, cb) => {
+      const items = document.querySelectorAll(selector)
+      items.forEach(item => {
+        cb(item)
+      })
+    }
 
   /**
    * Scrolltrigger generators for quickly creating scroll based animations
@@ -144,6 +164,8 @@ const GSAPMotionComposer = (start = "top bottom-=150px") => {
   
 
   return {
+    el,
+    all,
     each,
     onScroll
   }
