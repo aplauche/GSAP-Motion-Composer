@@ -44,7 +44,9 @@ const GSAPMotionComposer = (start = "top bottom-=150px") => {
     const each = (selector, cb) => {
       const items = document.querySelectorAll(selector)
       items.forEach(item => {
-        cb(item)
+        const el = (selectString) => item.querySelector(selectString)
+        const all = (selectString) => item.querySelectorAll(selectString)
+        cb(item, el, all);
       })
     }
 
@@ -62,8 +64,8 @@ const GSAPMotionComposer = (start = "top bottom-=150px") => {
      */
     enter: (
       section,
-      animation = false,
-      options = {}
+      options = {},
+      animation = false
     ) => {
       // If a timeline is not passed, create one and return it for chaining
       let tl = animation ? animation : gsap.timeline({})
@@ -86,8 +88,8 @@ const GSAPMotionComposer = (start = "top bottom-=150px") => {
      */
     enterAndReset: (
       section,
-      animation = false,
-      options = {}
+      options = {},
+      animation = false
     ) => {
       let tl = animation ? animation : gsap.timeline({})
       tl.pause(0)
@@ -115,8 +117,8 @@ const GSAPMotionComposer = (start = "top bottom-=150px") => {
      */
     scrub: (
       section,
-      animation = false,
-      options = {}
+      options = {},
+      animation = false
     ) => {
       let tl = animation ? animation : gsap.timeline({})
 
@@ -142,9 +144,9 @@ const GSAPMotionComposer = (start = "top bottom-=150px") => {
      */
     scrubAndPin: (
       section,
-      animation = false,
       length = 500,
-      options = {}
+      options = {},
+      animation = false
     ) => {
       let tl = animation ? animation : gsap.timeline({})
 
