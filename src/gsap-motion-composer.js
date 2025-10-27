@@ -1,28 +1,16 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { pinnedImageSequence } from './recipes/pinned-image-sequence';
-import { scrollingBodyClasses } from './recipes/scrolling-body-classes';
-import countUp from './effects/countUp';
-import wordSlideUp from './effects/wordSlideUp'
-import lineFadeIn from './effects/lineFadeIn'
 
-
-
-const GSAPMotionComposer = () => {
+const GSAPMotionComposer = (start = "top bottom-=150px") => {
 
   // Register Plugins
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(SplitText)
 
-  // Register Effects
-  countUp()
-  wordSlideUp()
-  lineFadeIn()
-
   // Defaults
   const scrollDefaults = {
-    start: "50% bottom",
+    start: start,
     scrub: false,
     pin: false
   }
@@ -153,21 +141,11 @@ const GSAPMotionComposer = () => {
       return tl
     }
   }
-
-
-  /**
-   * Pre-built and ready to go recipes - plug and play 
-   */
-  const recipes = {
-    pinnedImageSequence,
-    scrollingBodyClasses
-  }
   
 
   return {
     each,
-    onScroll,
-    recipes
+    onScroll
   }
 }
 
